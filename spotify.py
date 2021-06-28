@@ -3,8 +3,8 @@ from spotipy.oauth2 import SpotifyOAuth
 import time
 
 scope = "user-read-playback-state,user-modify-playback-state,user-read-playback-position"
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id="a3e20f3efd0048c0a07617792ba7d88c",
-                                               client_secret="14e628e918cf4c1fb37a4bbc9302977f",
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id="YOUR_CLIENT_ID",
+                                               client_secret="YOUR_CLIENT_SECRET",
                                                redirect_uri="http://localhost:8888/callback",
                                                scope=scope))
 
