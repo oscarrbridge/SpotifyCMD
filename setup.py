@@ -22,7 +22,7 @@ if found_package is True:
 else:
     subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'spotipy'])
 
-time.sleep(5)
+input("Press enter to continue")
 
 from start import *
 

@@ -4,6 +4,8 @@ from spotify import *
 def setup():
     user_input = 0
     current_vol = 0
+    sp.shuffle(False)
+    toggle = True
     current_device = sp.devices()
     options = {1: "Show devices",
                2: "Turn volume up",
@@ -11,7 +13,8 @@ def setup():
                4: "Skip track",
                5: "Previous track",
                6: "Pause / play",
-               7: "Shuffle"}
+               7: "Shuffle",
+               8: "Switch player"}
     try:
         current_vol = current_device["devices"][0]["volume_percent"]
 
@@ -48,7 +51,9 @@ def setup():
                     if user_input == 6:
                         play_track()
                     if user_input == 7:
-                        shuffle_songs()
+                        toggle = shuffle_songs(toggle)
+                    if user_input == 8:
+                        switch_device()
 
                     user_input = 0
                     sp.volume(current_vol)

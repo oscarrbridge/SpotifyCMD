@@ -77,5 +77,11 @@ def play_track():
         sp.pause_playback()
 
 
-def shuffle_songs():
-    sp.shuffle(False)
+def shuffle_songs(toggle):
+    sp.shuffle(toggle)
+    return not toggle
+
+
+def switch_device():
+    available_devices = sp.devices()
+    print(available_devices)
