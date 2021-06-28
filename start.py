@@ -13,8 +13,8 @@ def setup():
                4: "Skip track",
                5: "Previous track",
                6: "Pause / play",
-               7: "Shuffle",
-               8: "Switch player"}
+               7: "Shuffle"
+               }
     try:
         current_vol = current_device["devices"][0]["volume_percent"]
 
@@ -52,8 +52,6 @@ def setup():
                         play_track()
                     if user_input == 7:
                         toggle = shuffle_songs(toggle)
-                    if user_input == 8:
-                        switch_device()
 
                     user_input = 0
                     sp.volume(current_vol)

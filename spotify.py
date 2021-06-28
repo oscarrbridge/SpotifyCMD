@@ -80,8 +80,3 @@ def play_track():
 def shuffle_songs(toggle):
     sp.shuffle(toggle)
     return not toggle
-
-
-def switch_device():
-    available_devices = sp.devices()
-    print(available_devices)
