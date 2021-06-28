@@ -1,8 +1,8 @@
 import sys
 import subprocess
-from start import *
-
 import pkg_resources
+import time
+
 installed_packages = pkg_resources.working_set
 installed_packages_list = sorted(["%s==%s" % (i.key, i.version)
                                   for i in installed_packages])
@@ -21,5 +21,9 @@ if found_package is True:
 
 else:
     subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'spotipy'])
+
+time.sleep(5)
+
+from start import *
 
 setup()
