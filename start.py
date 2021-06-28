@@ -1,6 +1,4 @@
 from spotify import *
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
 
 
 def setup():
