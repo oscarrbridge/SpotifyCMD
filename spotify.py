@@ -78,4 +78,4 @@ def play_track():
 
 
 def shuffle_songs():
-    sp.shuffle()
+    sp.shuffle(False)
