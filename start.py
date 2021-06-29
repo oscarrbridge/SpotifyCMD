@@ -1,10 +1,10 @@
 from spotify import *
 
+print(CLEAR)
+
 
 def setup():
     user_input = 0
-    current_vol = 0
-    sp.shuffle(False)
     toggle = True
     current_device = sp.devices()
     options = {1: "Show devices",
@@ -15,11 +15,12 @@ def setup():
                6: "Pause / play",
                7: "Shuffle"
                }
-    try:
-        current_vol = current_device["devices"][0]["volume_percent"]
 
-    except:
+    while current_device["devices"][0]['is_active'] is False:
         print("There are no devices currently active! ")
+        input("Click enter when a device has been activated... ")
+    current_vol = current_device["devices"][0]["volume_percent"]
+    sp.shuffle(False)
 
     while True:
         try:
@@ -28,9 +29,9 @@ def setup():
                 for option in options:
                     print("{}: {}".format(option, options[option]))
 
-                user_input = int(input("What option would you like to choose?"))
+                user_input = int(input("What option would you like to choose? "))
 
-                print()
+                print(CLEAR)
 
                 current_device = sp.devices()
 
@@ -56,8 +57,12 @@ def setup():
                     user_input = 0
                     sp.volume(current_vol)
 
+                    print(CLEAR)
+
                 else:
                     print("There is no currently active device!")
 
         except ValueError:
             print("That is not a valid option! ")
+            time.sleep(1.25)
+            print(CLEAR)

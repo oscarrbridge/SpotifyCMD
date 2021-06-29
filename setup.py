@@ -1,7 +1,8 @@
 import sys
 import subprocess
 import pkg_resources
-import time
+from start import setup
+from spotify import CLEAR
 
 installed_packages = pkg_resources.working_set
 installed_packages_list = sorted(["%s==%s" % (i.key, i.version)
@@ -18,12 +19,10 @@ for package in range(len(installed_packages_list)):
 
 if found_package is True:
     print("Required packages found...")
+    setup()
 
 else:
     subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'spotipy'])
 
-input("Press enter to continue")
-
-from start import *
-
+input("Press enter once installation has been completed.")
 setup()

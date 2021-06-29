@@ -14,18 +14,23 @@ VOL_DECREASE = 25
 
 SLEEP_TIME = 0.75
 
+CLEAR = "\n" * 50
+
 
 def show_devices(current_device):
+    song = sp.currently_playing()['item']['name']
+    artist = sp.currently_playing()['item']['artists'][0]["name"]
+
     print("Current device name: {}".format(current_device["devices"][0]["name"]))
-    print("Current song: {}".format(sp.currently_playing()['item']['name']))
+    print("Current song: {} by {}".format(song, artist))
     input("Enter anything to go back ")
 
 
 def turn_vol_up(volume, current_device):
-    if current_device["devices"][0]["volume_percent"] - VOL_DECREASE >= 100:
-        print("Volume is already max!")
+    if current_device["devices"][0]["volume_percent"] + VOL_INCREASE >= 100:
+        print("Volume is max!")
         time.sleep(SLEEP_TIME)
-        return 0
+        return 100
 
     else:
         volume = volume + VOL_DECREASE
@@ -36,7 +41,7 @@ def turn_vol_up(volume, current_device):
 
 def turn_vol_down(volume, current_device):
     if current_device["devices"][0]["volume_percent"] - VOL_DECREASE <= 0:
-        print("Volume is already min!")
+        print("Volume is min!")
         time.sleep(SLEEP_TIME)
         return 0
 
@@ -52,8 +57,9 @@ def skip_track():
     currently_playing = sp.currently_playing()['item']['name']
     current_artist = sp.currently_playing()['item']['album']['artists'][0]['name']
     print("The current song is: {} by {}".format(currently_playing, current_artist))
-    option = input("Click 1 to go forward another song. ")
+    option = input("Click 1 to go forward another song or enter to continue ")
     if option == "1":
+        print(CLEAR)
         skip_track()
 
 
@@ -62,8 +68,9 @@ def previous_track():
     currently_playing = sp.currently_playing()['item']['name']
     current_artist = sp.currently_playing()['item']['album']['artists'][0]['name']
     print("The current song is: {} by {}".format(currently_playing, current_artist))
-    option = input("Click 1 to go back another song. ")
+    option = input("Click 1 to go back another song or enter to continue ")
     if option == "1":
+        print(CLEAR)
         previous_track()
 
 
